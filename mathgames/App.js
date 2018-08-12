@@ -10,26 +10,65 @@ export default class App extends React.Component {
     console.log("hello");
   }
 
-  numButtonsGeneration = () => {
-    let buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  // NEED TO FIX THIS. TRYING TO GENERATE BUTTONS USING LOOPS.... NO LUCK
+  numButtonsGeneration1 = () => {
+    let buttons1 = ['1', '2', '3',];
+    return (
+      buttons1.map(d => {
+        return (
+          <NumButtons
+            buttonPressed={this.buttonPressed}
+            num={d}
+            key={d}
+          />
+        )
+      }
+      )
+    )
+  }
 
-return (
-    buttons.map(x => {
+  numButtonsGeneration2 = () => {
+    let buttons2 = ['4', '5', '6', '0'];
+    buttons2.map(c => {
       return (
         <NumButtons
           buttonPressed={this.buttonPressed}
+          num={c}
+          key={c}
         />
       )
-    })
-  )
+    }
+    )
+  }
 
-
+  numButtonsGeneration3 = () => {
+    let buttons3 = ['7', '8', '9'];
+    buttons3.map(a => {
+      return (
+        <NumButtons
+          buttonPressed={this.buttonPressed}
+          num={a}
+          key={a}
+        />
+      )
+    }
+    );
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.numButtonsGeneration}
+      <View>
+          <View style={styles.container}>
+            {this.numButtonsGeneration1()}
+          </View>
+
+          <View style={styles.container}>
+            {this.numButtonsGeneration2()}
+          </View>
+
+          <View style={styles.container}>
+            {this.numButtonsGeneration3()}
+          </View>
       </View>
     );
   }
@@ -39,6 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
