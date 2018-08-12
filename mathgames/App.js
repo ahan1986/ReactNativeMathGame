@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
   // NEED TO FIX THIS. TRYING TO GENERATE BUTTONS USING LOOPS.... NO LUCK
   numButtonsGeneration1 = () => {
-    let buttons1 = ['1', '2', '3',];
+    let buttons1 = ['1', '4', '7',];
     return (
       buttons1.map(d => {
         return (
@@ -28,7 +28,7 @@ export default class App extends React.Component {
   }
 
   numButtonsGeneration2 = () => {
-    let buttons2 = ['4', '5', '6', '0'];
+    let buttons2 = ['2', '5', '8', '0'];
     return (
       buttons2.map(c => {
         return (
@@ -44,7 +44,7 @@ export default class App extends React.Component {
   }
 
   numButtonsGeneration3 = () => {
-    let buttons3 = ['7', '8', '9'];
+    let buttons3 = ['3', '6', '9', 'DEL'];
     return (
       buttons3.map(a => {
         return (
@@ -63,21 +63,26 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
 
-        <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'flex-start', flexWrap: 'wrap' }}>
-          <View style={{ width: 50, height: 50, marginHorizontal: 10, }}>
-            {this.numButtonsGeneration1()}
-          </View>
+        <View style={{ flex: 3, flexDirection: 'row', backgroundColor: 'purple' }}>
         </View>
 
-        <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <View style={{ width: 50, height: 50, marginHorizontal: 10, }}>
-            {this.numButtonsGeneration2()}
+        <View style={{ flex: 4, flexDirection: 'row' }}>
+          <View style={{ flex: 1, margin: 10, backgroundColor: 'yellow' }}>
+            <View style={{ width: 100, height: 50 }}>
+              {this.numButtonsGeneration1()}
+            </View>
           </View>
-        </View>
 
-        <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
-          <View style={{ width: 50, height: 50, marginHorizontal: 10, }}>
-            {this.numButtonsGeneration3()}
+          <View style={{ flex: 1, margin: 10, alignItems: 'center', backgroundColor: 'red' }}>
+            <View style={{ width: 100, height: 50 }}>
+              {this.numButtonsGeneration2()}
+            </View>
+          </View>
+
+          <View style={{ flex: 1, margin: 10, alignItems: 'flex-end', backgroundColor: 'blue' }}>
+            <View style={{ width: 100, height: 50 }}>
+              {this.numButtonsGeneration3()}
+            </View>
           </View>
         </View>
 
@@ -90,7 +95,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    flexDirection: 'row',
+    flexDirection: 'column',
   },
 
 });

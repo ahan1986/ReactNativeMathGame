@@ -4,7 +4,7 @@ import { Button, View } from 'react-native';
 
 const NumButtons = props => {
     return (
-        <View style={{height: 100, width: 100, backgroundColor: 'purple'}}>
+        <View style={{height: 100, width: 100}}>
             <Button onPress={() => props.buttonPressed(props.num)} title={props.num}/>
         </View>
     )
