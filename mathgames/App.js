@@ -63,7 +63,16 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
 
-        <View style={{ flex: 3, flexDirection: 'row', backgroundColor: 'purple' }}>
+        <View style={{ flex: 3, flexDirection: 'column', backgroundColor: 'purple' }}>
+          {/* area where the random numbers will be generated */}
+          <View style={{ flex: 2, backgroundColor: 'orange' }} >
+
+          </View>
+          {/* area where user input will be displayed */}
+          <View style={{ flex: 1, backgroundColor: 'brown' }} >
+            
+          </View>
+
         </View>
 
         <View style={{ flex: 4, flexDirection: 'row' }}>
