@@ -4,9 +4,15 @@ import ButtonsDisplayer from './components/NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './components/PressedButtonDisplayer/PressedButtonDisplay';
 import RandomNumberGen from './components/RandomNumberGen/RandomNumberGen';
 
-export default class App extends React.Component {
-  
+// importing redux
+import { createStore} from 'redux';
 
+export default class App extends React.Component {
+  state = {
+    typedNumber: []
+  }
+
+  
 
   render() {
     return (
