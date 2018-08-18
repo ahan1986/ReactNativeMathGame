@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ButtonsDisplayer from './components/NumButtons/ButtonsDisplayer';
+import PressedButtonDisplay from './components/PressedButtonDisplayer/PressedButtonDisplay';
+import RandomNumberGen from './components/RandomNumberGen/RandomNumberGen';
 
 export default class App extends React.Component {
   
@@ -10,6 +12,8 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
 
+        <RandomNumberGen />
+        <PressedButtonDisplay />
         <ButtonsDisplayer />
 
       </View>
@@ -19,9 +23,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    flexDirection: 'column',
-  },
+    flex: 1
+  }
 
 });

@@ -60,17 +60,6 @@ export default class ButtonsDisplayer extends React.Component {
     render() {
         return (
             <View style = {styles.container}>
-                <View style={{ flex: 3, flexDirection: 'column', backgroundColor: 'purple' }}>
-                    {/* area where the random numbers will be generated */}
-                    <View style={{ flex: 2, backgroundColor: 'orange' }} >
-
-                    </View>
-                    {/* area where user input will be displayed */}
-                    <View style={{ flex: 1, backgroundColor: 'brown' }} >
-
-                    </View>
-
-                </View>
 
                 <View style={{ flex: 4, flexDirection: 'row' }}>
                     <View style={{ flex: 1, margin: 10, backgroundColor: 'yellow' }}>
@@ -98,7 +87,7 @@ export default class ButtonsDisplayer extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      flex: 3,
       backgroundColor: '#fff',
       flexDirection: 'column',
     }
