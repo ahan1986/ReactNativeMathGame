@@ -2,13 +2,15 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 export default class PressedButtonDisplay extends React.Component {
-
+    state = {
+        typedNumber: []
+    }
     render() {
         return (
             <View style={styles.container}>
                 {/* area where user input will be displayed */}
                 <View style={{ flex: 1, backgroundColor: 'brown' }} >
-                    <Text> Hello </Text>
+                    <Text> {this.state.typedNumber} </Text>
                 </View>
             </View>
         )
