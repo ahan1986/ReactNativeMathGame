@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class RandomNumberGen extends React.Component {
+    state = {
+        firstNum: []
+    }
 
     render() {
         return (
