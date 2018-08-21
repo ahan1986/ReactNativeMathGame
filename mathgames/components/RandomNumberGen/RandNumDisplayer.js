@@ -5,21 +5,26 @@ import { StyleSheet, Text, View } from 'react-native';
 const RandNumDisplayer = props => {
 
     return (
-        <View style = {styles.container}>
-            <Text style = {{ fontSize: 50 }}>{props.numOne}</Text>
-            <Text style = {{ fontSize: 50 }}>{props.randOp}</Text>
-            <Text style = {{ fontSize: 50 }}>{props.numTwo}</Text>
+        <View style={styles.container}>
+            <View style={{ flexDirection: 'row', margin: 110, borderColor: 'white', borderWidth: 2, justifyContent: 'space-between', alignItems: 'center', height: 100, width: 200 }}>
+                <Text style={{ fontSize: 50 }}>{props.numOne}</Text>
+                <Text style={{ fontSize: 50 }}>{props.randOp}</Text>
+                <Text style={{ fontSize: 50 }}>{props.numTwo}</Text>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        borderColor: 'black',
-        borderWidth: 0.5,
-        flexDirection: 'row',
+        width: 400,
+        height: 300,
+        borderColor: 'red',
+        borderWidth: 3,
+        backgroundColor: 'purple',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        
     }
 })
 
