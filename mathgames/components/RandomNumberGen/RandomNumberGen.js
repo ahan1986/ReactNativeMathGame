@@ -12,19 +12,27 @@ export default class RandomNumberGen extends React.Component {
         this.equationGenerator = this.equationGenerator.bind(this);
     }
 
-    equationGenerator () {
-        let first, operator = ['+'], second;
+    equationGenerator() {
+        let first, operator = ['+', '-', '*', '/'], second;
 
-        first = Math.floor(Math.random()* 100);
-        // let randOperator = operator[Math.floor(Math.random() * operator.length)];
-        let randOperator = operator[0];
-        second = Math.floor(Math.random()* 100);
+        let randOperator = operator[Math.floor(Math.random() * operator.length)];
 
         // each case should use the component RandNumDisplayer to display the equations on to the screen
-        switch ( randOperator ) {
+        switch (randOperator) {
             case '+':
-                return <RandNumDisplayer numOne = {first} randOp = {randOperator} numTwo = {second} />
+                first = Math.floor(Math.random() * 100);
+                second = Math.floor(Math.random() * 100);
+
+                return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
+                break;
+            case '-':
+                first = Math.floor(Math.random() * 100);
+                second = Math.floor(Math.random() * 100);
+
+                return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
             break;
+            case '*':
+
             default:
                 <Text>BobDole</Text>
         }
@@ -33,8 +41,7 @@ export default class RandomNumberGen extends React.Component {
 
     render() {
         return (
-            <View style = {styles.container}>
-                
+            <View style={styles.container}>
                 {/* area where the random numbers will be generated */}
                 <View>
                     {this.equationGenerator()}
