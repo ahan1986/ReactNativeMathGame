@@ -5,18 +5,9 @@ import RandNumDisplayer from './RandNumDisplayer';
 export default class RandomNumberGen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
 
-        }
         // with es6 classes, React does not autobind functions inside components in this whole class. So you have to manually bind 'this' so that you can call equationGenerator method/function anywhere.
         this.equationGenerator = this.equationGenerator.bind(this);
-        this.wholeNumDivision = this.wholeNumDivision.bind(this);
-    }
-
-    wholeNumDivision() {
-        first = Math.floor(Math.random() * 100);
-        second = Math.floor(Math.random() * 100);
-        
     }
 
     equationGenerator() {
@@ -30,42 +21,43 @@ export default class RandomNumberGen extends React.Component {
                 second = Math.floor(Math.random() * 100);
 
                 return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-            break;
+                break;
 
             case '-':
                 first = Math.floor(Math.random() * 100);
                 second = Math.floor(Math.random() * 100);
 
                 // if/else statement to reverse 'second' number if the number is greater than the 'first'. This is so that the user doesn't need to use a negative number as an answer.
-                if(first < second) {
+                if (first < second) {
                     return <RandNumDisplayer numOne={second} randOp={randOperator} numTwo={first} />
                 } else {
                     return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
                 }
-                
-            break;
+
+                break;
 
             case '*':
                 first = Math.floor(Math.random() * 100);
                 second = Math.floor(Math.random() * 10);
 
                 return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-            break;
+                break;
 
             case '/':
-        
+
                 first = Math.floor(Math.random() * 100);
                 second = Math.floor(Math.random() * 10);
-//creating while loop so that dividing 'first' and 'second' will produce a whole number. So here, we will add 1 to the first number until it's divisible.
-                while(first % second !== 0) {
+
+                //creating while loop so that dividing 'first' and 'second' will produce a whole number. So here, we will add 1 to the first number until it's divisible.
+                while (first % second !== 0) {
                     first++
                 }
 
                 return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-            break;
+                break;
 
             default:
-                <Text>BobDole</Text>
+                <Text>Andrew A. Han, Baby!</Text>
         }
 
     }

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 
 const RandNumDisplayer = props => {
-    
+
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: 'row', margin: 110, justifyContent: 'space-between', alignItems: 'center', height: 100, width: 200 }}>
