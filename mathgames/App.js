@@ -12,6 +12,10 @@ export default class App extends React.Component {
     typedNumber: []
   }
 
+  buttonPressedApp = event => {
+    console.log(event);
+  }
+
   
 
   render() {
@@ -20,7 +24,7 @@ export default class App extends React.Component {
 
         <RandomNumberGen />
         <PressedButtonDisplay />
-        <ButtonsDisplayer />
+        <ButtonsDisplayer buttonPressed1={this.buttonPressedApp} />
 
       </View>
     );
