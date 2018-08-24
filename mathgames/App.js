@@ -13,8 +13,8 @@ export default class App extends React.Component {
   }
 
   buttonPressedApp = event => {
-    console.log(event);
-    event;
+    this.state.typedNumber = [...this.state.typedNumber, event].join('');
+  
   }
 
   numberGenerated(a, b, c) {
@@ -28,7 +28,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
 
         <RandomNumberGen numberGenerated1 = {this.numberGenerated} />
-        <PressedButtonDisplay />
+        <PressedButtonDisplay typed={this.state.typedNumber} />
         <ButtonsDisplayer buttonPressed1={this.buttonPressedApp} />
 
       </View>
