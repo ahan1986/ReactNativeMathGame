@@ -13,7 +13,8 @@ export default class App extends React.Component {
   }
 
   buttonPressedApp = event => {
-    // console.log(event);
+    console.log(event);
+    event;
   }
 
   numberGenerated(a, b, c) {

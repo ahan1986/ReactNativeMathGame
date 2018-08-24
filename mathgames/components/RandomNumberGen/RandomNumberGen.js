@@ -7,11 +7,17 @@ export default class RandomNumberGen extends React.Component {
         super(props);
 
         this.state = {
-            numberGen: props.numberGenerated1
+            numberGen: props.numberGenerated1,
+            pressed: props.buttonPressed1
         }
 
         // with es6 classes, React does not autobind functions inside components in this whole class. So you have to manually bind 'this' so that you can call equationGenerator method/function anywhere.
         this.equationGenerator = this.equationGenerator.bind(this);
+    }
+    
+    //create method to generate new problem equations
+    restartGenerator() {
+        this.equationGenerator();
     }
 
     equationGenerator() {
