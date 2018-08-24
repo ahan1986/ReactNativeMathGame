@@ -12,8 +12,8 @@ export default class ButtonsDisplayer extends React.Component {
   }
 
     buttonPressed = (event) => {
-        this.state.buttonP(event);
-        
+      //this will be sent back to app.js with the number that was pressed. Must use state to bring the function down to use props.
+      this.state.buttonP(event);
       }
     
       // NEED TO FIX THIS. TRYING TO GENERATE BUTTONS USING LOOPS.... NO LUCK

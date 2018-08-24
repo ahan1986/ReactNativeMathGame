@@ -13,16 +13,20 @@ export default class App extends React.Component {
   }
 
   buttonPressedApp = event => {
-    console.log(event);
+    // console.log(event);
   }
 
-  
+  numberGenerated(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+  }
 
   render() {
     return (
       <View style={styles.container}>
 
-        <RandomNumberGen />
+        <RandomNumberGen numberGenerated1 = {this.numberGenerated} />
         <PressedButtonDisplay />
         <ButtonsDisplayer buttonPressed1={this.buttonPressedApp} />
 

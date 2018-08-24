@@ -6,12 +6,16 @@ export default class RandomNumberGen extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            numberGen: props.numberGenerated1
+        }
+
         // with es6 classes, React does not autobind functions inside components in this whole class. So you have to manually bind 'this' so that you can call equationGenerator method/function anywhere.
         this.equationGenerator = this.equationGenerator.bind(this);
     }
 
     equationGenerator() {
-        let first, operator = ['/'], second;
+        let first, operator = ['+', '-', '*', '/'], second;
         const randOperator = operator[Math.floor(Math.random() * operator.length)];
 
         // each case should use the component RandNumDisplayer to display the equations on to the screen
@@ -20,12 +24,18 @@ export default class RandomNumberGen extends React.Component {
                 first = Math.floor(Math.random() * 100);
                 second = Math.floor(Math.random() * 100);
 
+                // returning the generated number plus the operator back to the app.js
+                this.state.numberGen(first, randOperator, second);
+
                 return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
                 break;
 
             case '-':
                 first = Math.floor(Math.random() * 100);
                 second = Math.floor(Math.random() * 100);
+
+                // returning the generated number plus the operator back to the app.js
+                this.state.numberGen(first, randOperator, second);
 
                 // if/else statement to reverse 'second' number if the number is greater than the 'first'. This is so that the user doesn't need to use a negative number as an answer.
                 if (first < second) {
@@ -40,6 +50,9 @@ export default class RandomNumberGen extends React.Component {
                 first = Math.floor(Math.random() * 100);
                 second = Math.floor(Math.random() * 10);
 
+                // returning the generated number plus the operator back to the app.js
+                this.state.numberGen(first, randOperator, second);
+
                 return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
                 break;
 
@@ -52,6 +65,9 @@ export default class RandomNumberGen extends React.Component {
                 while (first % second !== 0) {
                     first++
                 }
+
+                // returning the generated number plus the operator back to the app.js
+                this.state.numberGen(first, randOperator, second);
 
                 return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
                 break;
