@@ -3,9 +3,17 @@ import { StyleSheet, Button, View } from 'react-native';
 import NumButtons from './NumButtons';
 
 export default class ButtonsDisplayer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      buttonP: props.buttonPressed1
+    }
+  }
 
     buttonPressed = (event) => {
-        console.log(event);
+        this.state.buttonP(event);
+        
       }
     
       // NEED TO FIX THIS. TRYING TO GENERATE BUTTONS USING LOOPS.... NO LUCK
