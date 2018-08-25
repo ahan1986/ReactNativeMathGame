@@ -13,11 +13,16 @@ export default class RandomNumberGen extends React.Component {
 
         // with es6 classes, React does not autobind functions inside components in this whole class. So you have to manually bind 'this' so that you can call equationGenerator method/function anywhere.
         this.equationGenerator = this.equationGenerator.bind(this);
+
+        // setInterval(() => {
+        //     this.equationGenerator();
+        // },1000);
     }
     
     //create method to generate new problem equations
     restartGenerator() {
-        this.equationGenerator();
+        
+        
     }
 
     equationGenerator() {

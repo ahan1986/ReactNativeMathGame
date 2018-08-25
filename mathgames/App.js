@@ -9,12 +9,16 @@ import { createStore} from 'redux';
 
 export default class App extends React.Component {
   state = {
-    typedNumber: []
+    typedNumber: ['hello']
   }
 
   buttonPressedApp = event => {
-    this.state.typedNumber = [...this.state.typedNumber, event].join('');
-  
+    let numToChange = this.state.typedNumber = [...this.state.typedNumber, event].join(''); 
+    this.setState = ({
+      typedNumber:  numToChange
+    });
+    
+    console.log(this.state.typedNumber)
   }
 
   numberGenerated(a, b, c) {

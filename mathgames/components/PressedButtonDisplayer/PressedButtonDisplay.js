@@ -4,11 +4,8 @@ import { StyleSheet, View, Text } from 'react-native';
 export default class PressedButtonDisplay extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props.typed)
+        console.log("hello1 " + props.typed)
 
-        this.state = {
-            typedToDisplay: props.typed
-        }
     }
 
     methodToCheck() {
@@ -20,7 +17,7 @@ export default class PressedButtonDisplay extends React.Component {
             <View style={styles.container}>
                 {/* area where user input will be displayed */}
                 <View style={{ flex: 1, backgroundColor: 'brown' }} >
-                    <Text> {this.state.typedToDisplay} </Text>
+                    <Text> {this.props.typed} </Text>
                 </View>
             </View>
         )
