@@ -4,8 +4,7 @@ import { StyleSheet, View, Text } from 'react-native';
 export default class PressedButtonDisplay extends React.Component {
     constructor(props) {
         super(props);
-        console.log("hello1 " + props.typed)
-
+        
     }
 
     methodToCheck() {

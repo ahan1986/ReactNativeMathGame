@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback, Button } from 'react-native';
 import ButtonsDisplayer from './components/NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './components/PressedButtonDisplayer/PressedButtonDisplay';
 import RandomNumberGen from './components/RandomNumberGen/RandomNumberGen';
@@ -11,22 +11,25 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+
       this.state = {
         typedNumber: ['bobdole'],
-        firstNum: '',
-        operator: '',
-        secondNum: ''
+        sam: ""
       }
-    this.numberGenerated = this.numberGenerated.bind(this);
+
+    // if you're using fat arrow syntax, you do not need this bind(this)
+    this.buttonPressedApp = this.buttonPressedApp.bind(this);
 }
 
-  buttonPressedApp = event => {
-    let numToChange = this.state.typedNumber = [...this.state.typedNumber, event].join(''); 
-    this.setState = ({
+
+  buttonPressedApp(event) {
+    const numToChange = this.state.typedNumber = [...this.state.typedNumber, event].join(''); 
+    this.setState({
       typedNumber:  numToChange
     });
+
     
-    console.log(event)
+    console.log(this.state.typedNumber)
   }
 
   numberGenerated = (a, b, c) => {
@@ -38,6 +41,9 @@ export default class App extends React.Component {
     }
   }
 
+ onChangeHandler = (event) => {
+
+ }
 
 
   render() {
@@ -45,14 +51,11 @@ export default class App extends React.Component {
       <View style={styles.container}>
 
         <RandomNumberGen numberGenerated1 = {this.numberGenerated} />
-        <TouchableWithoutFeedback onPressIn={() => this.buttonPressedApp}>
-          <PressedButtonDisplay typed={this.state.typedNumber} />
-          
-        </TouchableWithoutFeedback>
-        <Text>{this.state.typedNumber} </Text>
+      
+        <PressedButtonDisplay typed={this.state.typedNumber} />
         
         <ButtonsDisplayer buttonPressed1={this.buttonPressedApp} />
-
+        
       </View>
     );
   }
