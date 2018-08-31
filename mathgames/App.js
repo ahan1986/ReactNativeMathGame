@@ -12,28 +12,29 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-      this.state = {
-        typedNumber: [],
-        generatedNum: [],
-        firstNum:[],
-        operator: [],
-        secondNum: []
-      }
+    this.state = {
+      typedNumber: [],
+      generatedNum: [],
+      firstNum: "",
+      operator: "",
+      secondNum: ""
+    }
 
     // if you're using fat arrow syntax, you do not need this bind(this)
     this.buttonPressedApp = this.buttonPressedApp.bind(this);
-}
+    this.equationGenerator = this.equationGenerator.bind(this);
+  }
 
 
   buttonPressedApp(event) {
-    const numToChange = this.state.typedNumber = [...this.state.typedNumber, event].join(''); 
+    const numToChange = this.state.typedNumber = [...this.state.typedNumber, event].join('');
     this.setState({
-      typedNumber:  numToChange
+      typedNumber: numToChange
     });
   }
 
   numberGenerated = (a, b, c) => {
-    
+
     let generatedNums = {
       firstNum: a,
       operator: b,
@@ -47,90 +48,120 @@ export default class App extends React.Component {
 
     // each case should use the component RandNumDisplayer to display the equations on to the screen
     switch (randOperator) {
-        case '+':
-            first = Math.floor(Math.random() * 100);
-            second = Math.floor(Math.random() * 100);
+      case '+':
+        first = Math.floor(Math.random() * 100);
+        second = Math.floor(Math.random() * 100);
 
-            // returning the generated number plus the operator back to the app.js
-            // this.state.numberGen(first, randOperator, second);
-            this.setState({
-              firstNum: first,
-              operator: randOperator,
-              secondNum: second
-            });
-            // return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-            break;
+        // returning the generated number plus the operator back to the app.js
+        // this.state.numberGen(first, randOperator, second);
+        this.setState({
+          firstNum: first,
+          operator: randOperator,
+          secondNum: second
+        });
+        return (
+          <View>
+            <Text>{this.state.firstNum}</Text>
+            <Text>{this.state.operator}</Text>
+            <Text>{this.state.secondNum}</Text>
+          </View>
+        )
+        break;
 
-        case '-':
-            first = Math.floor(Math.random() * 100);
-            second = Math.floor(Math.random() * 100);
+      case '-':
+        first = Math.floor(Math.random() * 100);
+        second = Math.floor(Math.random() * 100);
 
-            // returning the generated number plus the operator back to the app.js
-            // this.state.numberGen(first, randOperator, second);
-            this.setState({
-              firstNum: first,
-              operator: randOperator,
-              secondNum: second
-            });
-            // if/else statement to reverse 'second' number if the number is greater than the 'first'. This is so that the user doesn't need to use a negative number as an answer.
-            if (first < second) {
-              this.setState({
-                firstNum: second,
-                operator: randOperator,
-                secondNum: first
-              });
-                // return <RandNumDisplayer numOne={second} randOp={randOperator} numTwo={first} />
-            } else {
-              this.setState({
-                firstNum: first,
-                operator: randOperator,
-                secondNum: second
-              });
-                // return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-            }
+        // returning the generated number plus the operator back to the app.js
+        // this.state.numberGen(first, randOperator, second);
+        this.setState({
+          firstNum: first,
+          operator: randOperator,
+          secondNum: second
+        });
+        // if/else statement to reverse 'second' number if the number is greater than the 'first'. This is so that the user doesn't need to use a negative number as an answer.
+        if (first < second) {
+          this.setState({
+            firstNum: second,
+            operator: randOperator,
+            secondNum: first
+          });
+          return (
+            <View>
+              <Text>{this.state.firstNum}</Text>
+              <Text>{this.state.operator}</Text>
+              <Text>{this.state.secondNum}</Text>
+            </View>
+          )
+        } else {
+          this.setState({
+            firstNum: first,
+            operator: randOperator,
+            secondNum: second
+          });
+          return (
+            <View>
+              <Text>{this.state.firstNum}</Text>
+              <Text>{this.state.operator}</Text>
+              <Text>{this.state.secondNum}</Text>
+            </View>
+          )
+        }
 
-            break;
+        break;
 
-        case '*':
-            first = Math.floor(Math.random() * 100);
-            second = Math.floor(Math.random() * 10);
+      case '*':
+        first = Math.floor(Math.random() * 100);
+        second = Math.floor(Math.random() * 10);
 
-            // returning the generated number plus the operator back to the app.js
-            // this.state.numberGen(first, randOperator, second);
-            this.setState({
-              firstNum: first,
-              operator: randOperator,
-              secondNum: second
-            });
-            // return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-            break;
+        // returning the generated number plus the operator back to the app.js
+        // this.state.numberGen(first, randOperator, second);
+        this.setState({
+          firstNum: first,
+          operator: randOperator,
+          secondNum: second
+        });
+        return (
+          <View>
+            <Text>{this.state.firstNum}</Text>
+            <Text>{this.state.operator}</Text>
+            <Text>{this.state.secondNum}</Text>
+          </View>
+        )
+        break;
 
-        case '/':
+      case '/':
 
-            first = Math.floor(Math.random() * 100);
-            second = Math.floor(Math.random() * 10);
+        first = Math.floor(Math.random() * 100);
+        second = Math.floor(Math.random() * 10);
 
-            //creating while loop so that dividing 'first' and 'second' will produce a whole number. So here, we will add 1 to the first number until it's divisible.
-            while (first % second !== 0) {
-                first++
-            }
+        //creating while loop so that dividing 'first' and 'second' will produce a whole number. So here, we will add 1 to the first number until it's divisible.
+        while (first % second !== 0) {
+          first++
+        }
 
-            // returning the generated number plus the operator back to the app.js
-            // this.state.numberGen(first, randOperator, second);
-            this.setState({
-              firstNum: first,
-              operator: randOperator,
-              secondNum: second
-            });
+        // returning the generated number plus the operator back to the app.js
+        // this.state.numberGen(first, randOperator, second);
+        this.setState({
+          firstNum: first,
+          operator: randOperator,
+          secondNum: second
+        });
 
-            // return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-            break;
+        return (
+          <View>
+            <Text>{this.state.firstNum}</Text>
+            <Text>{this.state.operator}</Text>
+            <Text>{this.state.secondNum}</Text>
+          </View>
+        )
+        break;
 
-        default:
-            <Text>Andrew A. Han, Baby!</Text>
+      default:
+        <Text>Andrew A. Han, Baby!</Text>
     }
 
-}
+  }
 
 
   render() {
@@ -138,15 +169,13 @@ export default class App extends React.Component {
       <View style={styles.container}>
 
         {/* <RandomNumberGen numberGenerated1 = {this.numberGenerated} /> */}
-        <View style={styles.topContainer} >
-          <Text style={{justifyContent: 'center', borderColor: 'black'}} >{this.state.firstNum}</Text>
-          <Text>{this.state.operator}</Text>
-          <Text>{this.state.secondNum}</Text>
-        </View>
+
+        {this.equationGenerator}
+
         <PressedButtonDisplay typed={this.state.typedNumber} />
-        
+
         <ButtonsDisplayer buttonPressed1={this.buttonPressedApp} />
-        
+
       </View>
     );
   }
@@ -156,7 +185,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  topContainer:{
+  topContainer: {
     flex: 2,
     backgroundColor: 'orange'
   }
