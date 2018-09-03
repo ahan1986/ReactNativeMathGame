@@ -30,7 +30,7 @@ export default class App extends React.Component {
   componentDidMount() {
 
     this.equationGenerator();
-    
+
   }
 
 
@@ -51,7 +51,7 @@ export default class App extends React.Component {
   }
 
   equationGenerator() {
-    let first, operator = ['+'], second;
+    let first, operator = ['+', '-', '*', '/'], second;
     const randOperator = operator[Math.floor(Math.random() * operator.length)];
 
     // each case should use the component RandNumDisplayer to display the equations on to the screen
