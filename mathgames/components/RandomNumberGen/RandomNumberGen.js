@@ -15,69 +15,69 @@ export default class RandomNumberGen extends React.Component {
  
     }
 
-    equationGenerator() {
-        let first, operator = ['+', '-', '*', '/'], second;
-        const randOperator = operator[Math.floor(Math.random() * operator.length)];
+    // equationGenerator() {
+    //     let first, operator = ['+', '-', '*', '/'], second;
+    //     const randOperator = operator[Math.floor(Math.random() * operator.length)];
 
-        // each case should use the component RandNumDisplayer to display the equations on to the screen
-        switch (randOperator) {
-            case '+':
-                first = Math.floor(Math.random() * 100);
-                second = Math.floor(Math.random() * 100);
+    //     // each case should use the component RandNumDisplayer to display the equations on to the screen
+    //     switch (randOperator) {
+    //         case '+':
+    //             first = Math.floor(Math.random() * 100);
+    //             second = Math.floor(Math.random() * 100);
 
-                // returning the generated number plus the operator back to the app.js
-                this.state.numberGen(first, randOperator, second);
+    //             // returning the generated number plus the operator back to the app.js
+    //             this.state.numberGen(first, randOperator, second);
 
-                return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-                break;
+    //             return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
+    //             break;
 
-            case '-':
-                first = Math.floor(Math.random() * 100);
-                second = Math.floor(Math.random() * 100);
+    //         case '-':
+    //             first = Math.floor(Math.random() * 100);
+    //             second = Math.floor(Math.random() * 100);
 
-                // returning the generated number plus the operator back to the app.js
-                this.state.numberGen(first, randOperator, second);
+    //             // returning the generated number plus the operator back to the app.js
+    //             this.state.numberGen(first, randOperator, second);
 
-                // if/else statement to reverse 'second' number if the number is greater than the 'first'. This is so that the user doesn't need to use a negative number as an answer.
-                if (first < second) {
-                    return <RandNumDisplayer numOne={second} randOp={randOperator} numTwo={first} />
-                } else {
-                    return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-                }
+    //             // if/else statement to reverse 'second' number if the number is greater than the 'first'. This is so that the user doesn't need to use a negative number as an answer.
+    //             if (first < second) {
+    //                 return <RandNumDisplayer numOne={second} randOp={randOperator} numTwo={first} />
+    //             } else {
+    //                 return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
+    //             }
 
-                break;
+    //             break;
 
-            case '*':
-                first = Math.floor(Math.random() * 100);
-                second = Math.floor(Math.random() * 10);
+    //         case '*':
+    //             first = Math.floor(Math.random() * 100);
+    //             second = Math.floor(Math.random() * 10);
 
-                // returning the generated number plus the operator back to the app.js
-                this.state.numberGen(first, randOperator, second);
+    //             // returning the generated number plus the operator back to the app.js
+    //             this.state.numberGen(first, randOperator, second);
 
-                return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-                break;
+    //             return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
+    //             break;
 
-            case '/':
+    //         case '/':
 
-                first = Math.floor(Math.random() * 100);
-                second = Math.floor(Math.random() * 10);
+    //             first = Math.floor(Math.random() * 100);
+    //             second = Math.floor(Math.random() * 10);
 
-                //creating while loop so that dividing 'first' and 'second' will produce a whole number. So here, we will add 1 to the first number until it's divisible.
-                while (first % second !== 0) {
-                    first++
-                }
+    //             //creating while loop so that dividing 'first' and 'second' will produce a whole number. So here, we will add 1 to the first number until it's divisible.
+    //             while (first % second !== 0) {
+    //                 first++
+    //             }
 
-                // returning the generated number plus the operator back to the app.js
-                this.state.numberGen(first, randOperator, second);
+    //             // returning the generated number plus the operator back to the app.js
+    //             this.state.numberGen(first, randOperator, second);
 
-                return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
-                break;
+    //             return <RandNumDisplayer numOne={first} randOp={randOperator} numTwo={second} />
+    //             break;
 
-            default:
-                <Text>Andrew A. Han, Baby!</Text>
-        }
+    //         default:
+    //             <Text>Andrew A. Han, Baby!</Text>
+    //     }
 
-    }
+    // }
 
     render() {
         return (

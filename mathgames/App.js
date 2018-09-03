@@ -11,6 +11,7 @@ export default class App extends React.Component {
     this.state = {
       typedNumber: [],
       score: 0,
+      timer: 0,
       firstNum: "",
       operator: "",
       secondNum: ""
