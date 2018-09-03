@@ -24,6 +24,13 @@ export default class App extends React.Component {
     // if you're using fat arrow syntax, you do not need this bind(this)
     this.buttonPressedApp = this.buttonPressedApp.bind(this);
     this.equationGenerator = this.equationGenerator.bind(this);
+
+  }
+
+  componentDidMount() {
+
+    this.equationGenerator();
+    
   }
 
 
@@ -43,8 +50,8 @@ export default class App extends React.Component {
     }
   }
 
-  equationGenerator = () => {
-    let first, operator = ['+', '-', '*', '/'], second;
+  equationGenerator() {
+    let first, operator = ['+'], second;
     const randOperator = operator[Math.floor(Math.random() * operator.length)];
 
     // each case should use the component RandNumDisplayer to display the equations on to the screen
@@ -61,8 +68,6 @@ export default class App extends React.Component {
           secondNum: second
         });
         
-        return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
-
         break;
 
       case '-':
@@ -84,16 +89,13 @@ export default class App extends React.Component {
             secondNum: first
           });
 
-          return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
-
         } else {
+
           this.setState({
             firstNum: first,
             operator: randOperator,
             secondNum: second
           });
-
-          return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
 
         }
 
@@ -110,8 +112,7 @@ export default class App extends React.Component {
           operator: randOperator,
           secondNum: second
         });
-        
-        return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
+
         break;
 
       case '/':
@@ -132,8 +133,6 @@ export default class App extends React.Component {
           secondNum: second
         });
 
-        return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
-
         break;
 
       default:
@@ -149,7 +148,8 @@ export default class App extends React.Component {
 
         {/* <RandomNumberGen numberGenerated1 = {this.numberGenerated} /> */}
 
-        {this.equationGenerator}
+        {/* {this.equationGenerator} */}
+        <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
 
         <PressedButtonDisplay typed={this.state.typedNumber} />
 
