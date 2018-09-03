@@ -1,13 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import ButtonsDisplayer from './components/NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './components/PressedButtonDisplayer/PressedButtonDisplay';
-import RandomNumberGen from './components/RandomNumberGen/RandomNumberGen';
 import RandNumDisplayer from './components/RandomNumberGen/RandNumDisplayer';
-import { Provider } from 'react-redux';
-
-// importing redux
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -33,12 +28,24 @@ export default class App extends React.Component {
 
   }
 
-
+// do all the calculations here and if the user gets the answer correct, reload the equationGenerator()
   buttonPressedApp(event) {
+
     const numToChange = this.state.typedNumber = [...this.state.typedNumber, event].join('');
     this.setState({
       typedNumber: numToChange
     });
+// use eval function to solve the random generated numbers.  eval will help me convert the stringed operator to become a math operator along with all the other stringed numbers
+    const answer = eval(this.state.firstNum + this.state.operator + this.state.secondNum);
+
+    // if statement to check if the user pressed the right answer. if so, a new equation will be generated
+    if(answer == this.state.typedNumber) {
+      this.equationGenerator();
+      this.setState({
+        typedNumber: []
+      })
+    } 
+
   }
 
   numberGenerated = (a, b, c) => {
@@ -141,6 +148,9 @@ export default class App extends React.Component {
 
   }
 
+  changeStuff = () => {
+    console.log("hello");
+  }
 
   render() {
     return (
@@ -152,9 +162,9 @@ export default class App extends React.Component {
         <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
 
         <PressedButtonDisplay typed={this.state.typedNumber} />
-
+        
         <ButtonsDisplayer buttonPressed1={this.buttonPressedApp} />
-
+        
       </View>
     );
   }
