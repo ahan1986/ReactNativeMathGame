@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableWithoutFeedback, Button } from 'react-
 import ButtonsDisplayer from './components/NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './components/PressedButtonDisplayer/PressedButtonDisplay';
 import RandomNumberGen from './components/RandomNumberGen/RandomNumberGen';
+import RandNumDisplayer from './components/RandomNumberGen/RandNumDisplayer';
 import { Provider } from 'react-redux';
 
 // importing redux
@@ -42,7 +43,7 @@ export default class App extends React.Component {
     }
   }
 
-  equationGenerator() {
+  equationGenerator = () => {
     let first, operator = ['+', '-', '*', '/'], second;
     const randOperator = operator[Math.floor(Math.random() * operator.length)];
 
@@ -59,13 +60,9 @@ export default class App extends React.Component {
           operator: randOperator,
           secondNum: second
         });
-        return (
-          <View>
-            <Text>{this.state.firstNum}</Text>
-            <Text>{this.state.operator}</Text>
-            <Text>{this.state.secondNum}</Text>
-          </View>
-        )
+        
+        return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
+
         break;
 
       case '-':
@@ -86,26 +83,18 @@ export default class App extends React.Component {
             operator: randOperator,
             secondNum: first
           });
-          return (
-            <View>
-              <Text>{this.state.firstNum}</Text>
-              <Text>{this.state.operator}</Text>
-              <Text>{this.state.secondNum}</Text>
-            </View>
-          )
+
+          return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
+
         } else {
           this.setState({
             firstNum: first,
             operator: randOperator,
             secondNum: second
           });
-          return (
-            <View>
-              <Text>{this.state.firstNum}</Text>
-              <Text>{this.state.operator}</Text>
-              <Text>{this.state.secondNum}</Text>
-            </View>
-          )
+
+          return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
+
         }
 
         break;
@@ -121,13 +110,8 @@ export default class App extends React.Component {
           operator: randOperator,
           secondNum: second
         });
-        return (
-          <View>
-            <Text>{this.state.firstNum}</Text>
-            <Text>{this.state.operator}</Text>
-            <Text>{this.state.secondNum}</Text>
-          </View>
-        )
+        
+        return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
         break;
 
       case '/':
@@ -148,13 +132,8 @@ export default class App extends React.Component {
           secondNum: second
         });
 
-        return (
-          <View>
-            <Text>{this.state.firstNum}</Text>
-            <Text>{this.state.operator}</Text>
-            <Text>{this.state.secondNum}</Text>
-          </View>
-        )
+        return <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
+
         break;
 
       default:
