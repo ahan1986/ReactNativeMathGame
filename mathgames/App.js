@@ -10,7 +10,7 @@ export default class App extends React.Component {
 
     this.state = {
       typedNumber: [],
-      generatedNum: [],
+      score: 0,
       firstNum: "",
       operator: "",
       secondNum: ""
@@ -23,46 +23,48 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-
     this.equationGenerator();
-
   }
 
   // do all the calculations here and if the user gets the answer correct, reload the equationGenerator()
   buttonPressedApp(event) {
 
-    if(event != 'DEL') {
-    const numToChange = this.state.typedNumber = [...this.state.typedNumber, event].join('');
-    this.setState({
-      typedNumber: numToChange
-    });
-    // use eval function to solve the random generated numbers.  eval will help me convert the stringed operator to become a math operator along with all the other stringed numbers
-    const answer = eval(this.state.firstNum + this.state.operator + this.state.secondNum);
-
-    // if statement to check if the user pressed the right answer. if so, a new equation will be generated
-    if (answer == this.state.typedNumber) {
-      this.equationGenerator();
+    if (event != 'DEL') {
+      const numToChange = this.state.typedNumber = [...this.state.typedNumber, event].join('');
       this.setState({
-        typedNumber: []
-      })
-    }
-    
-  } else {
+        typedNumber: numToChange
+      });
+      // use eval function to solve the random generated numbers.  eval will help me convert the stringed operator to become a math operator along with all the other stringed numbers
+      const answer = eval(this.state.firstNum + this.state.operator + this.state.secondNum);
 
-    //if "DEL" is clicked, remove the last number
-   
+      // if statement to check if the user pressed the right answer. if so, a new equation will be generated
+      if (answer == this.state.typedNumber) {
+
+        const addOneToScore = this.state.score + 1;
+
+        this.setState({
+          typedNumber: [],
+          score: addOneToScore
+        })
+        
+        this.equationGenerator();
+        
+      }
+
+      
+
+    } else {
+
+      //if "DEL" is clicked, remove the last number
+
       if (this.state.typedNumber.length != 0) {
 
         const deleteOne = this.state.typedNumber.slice(0, this.state.typedNumber.length - 1);
-
-        console.log(this.state.typedNumber);
-        console.log(deleteOne); 
 
         this.setState({
           typedNumber: deleteOne
         })
 
-        
       }
     }
   }
@@ -165,10 +167,6 @@ export default class App extends React.Component {
         <Text>Andrew A. Han, Baby!</Text>
     }
 
-  }
-
-  changeStuff = () => {
-    console.log("hello");
   }
 
   render() {
