@@ -31,11 +31,14 @@ export default class App extends React.Component {
   //create a method that will start the timer
   timerMethod = () => {
     setInterval(() => {
-      const timerUpdate = this.state.timer++;
+      const timerUpdate = this.state.timer + 1;
       this.setState({
         timer: timerUpdate
       })
+      console.log(this.state.timer);
+      
     }, 1000)
+    
   }
 
   // do all the calculations here and if the user gets the answer correct, reload the equationGenerator()
