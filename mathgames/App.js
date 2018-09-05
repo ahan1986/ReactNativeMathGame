@@ -25,6 +25,17 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.equationGenerator();
+    this.timerMethod();
+  }
+
+  //create a method that will start the timer
+  timerMethod = () => {
+    setInterval(() => {
+      const timerUpdate = this.state.timer++;
+      this.setState({
+        timer: timerUpdate
+      })
+    }, 1000)
   }
 
   // do all the calculations here and if the user gets the answer correct, reload the equationGenerator()
@@ -67,15 +78,6 @@ export default class App extends React.Component {
         })
 
       }
-    }
-  }
-
-  numberGenerated = (a, b, c) => {
-
-    let generatedNums = {
-      firstNum: a,
-      operator: b,
-      secondNum: c
     }
   }
 
