@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import ButtonsDisplayer from './components/NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './components/PressedButtonDisplayer/PressedButtonDisplay';
 import RandNumDisplayer from './components/RandomNumberGen/RandNumDisplayer';
-import moment from 'moment';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,7 +10,7 @@ export default class App extends React.Component {
 
     this.state = {
       typedNumber: [],
-      score: 0,
+      question: 0,
       timer: 0,
       firstNum: "",
       operator: "",
@@ -54,13 +53,13 @@ export default class App extends React.Component {
       // if statement to check if the user pressed the right answer. if so, a new equation will be generated
       if (answer == this.state.typedNumber) {
 
-        const addOneToScore = this.state.score + 1;
+        const addOneToScore = this.state.question + 1;
 
         this.setState({
           typedNumber: [],
-          score: addOneToScore
+          question: addOneToScore
         })
-
+        console.log(addOneToScore);
         this.equationGenerator();
 
       }
@@ -190,11 +189,11 @@ export default class App extends React.Component {
         {/* <RandomNumberGen numberGenerated1 = {this.numberGenerated} /> */}
 
         {/* {this.equationGenerator} */}
-        <View>
-          <Text style={{ justifyContent: 'center', alignItems: 'center', fontSize: 10, color: 'black', marginTop: 50, marginLeft: 60 }} >
-            {timeString}
+        <View style={{flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', marginTop: 50, marginLeft: 60}}>
+          <Text style={{width: 100}} >
+            {timeString  }
           </Text>
-          <Text> Hello </Text>
+          <Text style={{width: 100}}>{this.state.question} / 50</Text>
         </View>
 
         <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
