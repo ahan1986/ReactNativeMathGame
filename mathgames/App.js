@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       typedNumber: [],
       score: 0,
-      timer: 59,
+      timer: 0,
       firstNum: "",
       operator: "",
       secondNum: ""
@@ -178,7 +178,11 @@ export default class App extends React.Component {
 
   render() {
 
-    // const duration = moment.duration(this.state.timer);
+    //concerting the seconds into a format with minutes and seconds.
+    const date = new Date(null);
+    date.setMinutes(this.state.timer)
+    const timeString = date.toISOString().substr(11, 8);
+
 
     return (
       <View style={styles.container}>
@@ -187,7 +191,7 @@ export default class App extends React.Component {
 
         {/* {this.equationGenerator} */}
         <Text style={{justifyContent: 'center', alignItems: 'center', fontSize: 10, color: 'black', marginTop: 50, marginLeft: 60}} >  
-          {moment.duration(this.state.timer).seconds()}
+          {timeString}
         </Text>
 
         <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
