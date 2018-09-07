@@ -36,10 +36,8 @@ export default class App extends React.Component {
       this.setState({
         timer: timerUpdate
       })
-      console.log(this.state.timer);
-      
-    }, 1000)
-    
+    }, 1);
+
   }
 
   // do all the calculations here and if the user gets the answer correct, reload the equationGenerator()
@@ -62,12 +60,12 @@ export default class App extends React.Component {
           typedNumber: [],
           score: addOneToScore
         })
-        
+
         this.equationGenerator();
-        
+
       }
 
-      
+
 
     } else {
 
@@ -178,10 +176,12 @@ export default class App extends React.Component {
 
   render() {
 
-    //concerting the seconds into a format with minutes and seconds.
+    //converting the seconds into a format with minutes and seconds using the date object in the JS library
     const date = new Date(null);
-    date.setMinutes(this.state.timer)
+    date.setSeconds(this.state.timer)
+    // toISOString() will use ISO standard for the time and substr() method will cut out the unnecary stuff from the format and display the one you want. 
     const timeString = date.toISOString().substr(11, 8);
+
 
 
     return (
@@ -190,9 +190,12 @@ export default class App extends React.Component {
         {/* <RandomNumberGen numberGenerated1 = {this.numberGenerated} /> */}
 
         {/* {this.equationGenerator} */}
-        <Text style={{justifyContent: 'center', alignItems: 'center', fontSize: 10, color: 'black', marginTop: 50, marginLeft: 60}} >  
-          {timeString}
-        </Text>
+        <View>
+          <Text style={{ justifyContent: 'center', alignItems: 'center', fontSize: 10, color: 'black', marginTop: 50, marginLeft: 60 }} >
+            {timeString}
+          </Text>
+          <Text> Hello </Text>
+        </View>
 
         <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
 
