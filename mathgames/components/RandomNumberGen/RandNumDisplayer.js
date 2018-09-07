@@ -6,7 +6,7 @@ const RandNumDisplayer = props => {
 
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: 'row', margin: 110, justifyContent: 'space-between', alignItems: 'center', height: 100, width: 200 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: 100, width: 200, paddingRight: 30 }}>
                 <Text style={{ fontSize: 50 }}>{props.numOne}</Text>
                 <Text style={{ fontSize: 50 }}>{props.randOp}</Text>
                 <Text style={{ fontSize: 50 }}>{props.numTwo}</Text>

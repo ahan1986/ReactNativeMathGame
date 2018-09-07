@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import ButtonsDisplayer from './components/NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './components/PressedButtonDisplayer/PressedButtonDisplay';
 import RandNumDisplayer from './components/RandomNumberGen/RandNumDisplayer';
+import moment from 'moment';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       typedNumber: [],
       score: 0,
-      timer: 0,
+      timer: 59,
       firstNum: "",
       operator: "",
       secondNum: ""
@@ -176,12 +177,19 @@ export default class App extends React.Component {
   }
 
   render() {
+
+    // const duration = moment.duration(this.state.timer);
+
     return (
       <View style={styles.container}>
 
         {/* <RandomNumberGen numberGenerated1 = {this.numberGenerated} /> */}
 
         {/* {this.equationGenerator} */}
+        <Text style={{justifyContent: 'center', alignItems: 'center', fontSize: 10, color: 'black', marginTop: 50, marginLeft: 60}} >  
+          {moment.duration(this.state.timer).seconds()}
+        </Text>
+
         <RandNumDisplayer numOne={this.state.firstNum} randOp={this.state.operator} numTwo={this.state.secondNum} />
 
         <PressedButtonDisplay typed={this.state.typedNumber} />
