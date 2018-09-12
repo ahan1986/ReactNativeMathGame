@@ -15,8 +15,8 @@ export default class PressedButtonDisplay extends React.Component {
         return (
             <View style={styles.container}>
                 {/* area where user input will be displayed */}
-                <View style={{ flex: 1, backgroundColor: 'brown' }} >
-                    <Text> {this.props.typed} </Text>
+                <View style={{ flex: 1, backgroundColor: 'brown', justifyContent: 'center', alignItems: 'center' }} >
+                    <Text style={{ fontSize: 40 }} > {this.props.typed} </Text>
                 </View>
             </View>
         )
