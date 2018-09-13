@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import Game from './components/game';
 import Home from './components/home';
 
+
 export default class App extends React.Component {
   state = {
     homepage: 'Game'
