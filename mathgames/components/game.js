@@ -61,7 +61,7 @@ export default class Game extends React.Component {
                     })
                     console.log(addOneToScore);
                     this.equationGenerator();
-                }, 10);
+                }, 20);
             }
 
 
@@ -176,7 +176,8 @@ export default class Game extends React.Component {
 
         //converting the seconds into a format with minutes and seconds using the date object in the JS library
         const date = new Date(null);
-        date.setSeconds(this.state.timer)
+
+        date.setSeconds(this.state.timer);
         // toISOString() will use ISO standard for the time and substr() method will cut out the unnecary stuff from the format and display the one you want. 
         const timeString = date.toISOString().substr(11, 8);
 
