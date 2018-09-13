@@ -51,18 +51,18 @@ export default class Game extends React.Component {
 
             // if statement to check if the user pressed the right answer. if so, a new equation will be generated
             if (answer == this.state.typedNumber) {
+                //Using setTimeout because without it the app doesn't display the final number typed, instead it goes to the next question.
+                setTimeout(() => {
+                    const addOneToScore = this.state.question + 1;
 
-                const addOneToScore = this.state.question + 1;
-
-                this.setState({
-                    typedNumber: [],
-                    question: addOneToScore
-                })
-                console.log(addOneToScore);
-                this.equationGenerator();
-
+                    this.setState({
+                        typedNumber: [],
+                        question: addOneToScore
+                    })
+                    console.log(addOneToScore);
+                    this.equationGenerator();
+                }, 10);
             }
-
 
 
         } else {

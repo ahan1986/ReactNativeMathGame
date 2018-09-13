@@ -34,7 +34,7 @@ export default class PressedButtonDisplay extends React.Component {
             <View style={styles.container}>
                 {/* area where user input will be displayed */}
                 <View style={{ flex: 1, backgroundColor: 'brown', justifyContent: 'center', alignItems: 'center' }} >
-                    <Text style={isFontLoaded && { fontSize: 40, fontFamily: 'GamjaFlower' }} > {this.props.typed} </Text>
+                    <Text style={isFontLoaded && { fontSize: 50, fontFamily: 'GamjaFlower', fontWeight: 'bold'}} > {this.props.typed} </Text>
                 </View>
             </View>
         )
