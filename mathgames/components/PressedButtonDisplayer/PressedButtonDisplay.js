@@ -29,7 +29,9 @@ export default class PressedButtonDisplay extends React.Component {
     }
 
     render() {
+        
         const { isFontLoaded } = this.state;
+
         return (
             <View style={styles.container}>
                 {/* area where user input will be displayed */}

@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-
 const RandNumDisplayer = props => {
 
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: 100, width: 200 }}>
-                <Text style={{ fontSize: 50 }}>{props.numOne}</Text>
-                <Text style={{ fontSize: 50 }}>{props.randOp}</Text>
-                <Text style={{ fontSize: 50 }}>{props.numTwo}</Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Text style={{ fontSize: 50, marginHorizontal: '5%' }}>{props.numOne}</Text>
+                <Text style={{ fontSize: 50, marginHorizontal: '5%' }}>{props.randOp}</Text>
+                <Text style={{ fontSize: 50, marginHorizontal: '5%' }}>{props.numTwo}</Text>
             </View>
         </View>
     )
@@ -17,8 +16,9 @@ const RandNumDisplayer = props => {
 
 const styles = StyleSheet.create({
     container: {
-        width: 400,
-        height: 120,
+        flex: 1,
+        width: '100%',
+        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
     }

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import ButtonsDisplayer from './NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './PressedButtonDisplayer/PressedButtonDisplay';
 import RandNumDisplayer from './RandomNumberGen/RandNumDisplayer';
+import { Font } from 'expo';
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -14,7 +15,8 @@ export default class Game extends React.Component {
             timer: 0,
             firstNum: "",
             operator: "",
-            secondNum: ""
+            secondNum: "",
+            isFontLoaded: true,
         }
 
         // if you're using fat arrow syntax, you do not need this bind(this)
@@ -23,9 +25,17 @@ export default class Game extends React.Component {
 
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.equationGenerator();
         this.timerMethod();
+
+        await Font.loadAsync({
+            'GamjaFlower': require('../assets/fonts/GamjaFlower-Regular.ttf')
+        }).then(() => {
+            this.setState({
+                isFontLoaded: true,
+            });
+        })
     }
 
     //create a method that will start the timer
@@ -181,6 +191,8 @@ export default class Game extends React.Component {
         // toISOString() will use ISO standard for the time and substr() method will cut out the unnecary stuff from the format and display the one you want. 
         const timeString = date.toISOString().substr(11, 8);
 
+        const { isFontLoaded } = this.state;
+
         return (
             <View style={styles.container}>
 
@@ -207,6 +219,7 @@ export default class Game extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+       
     }
 });

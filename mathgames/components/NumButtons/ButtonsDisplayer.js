@@ -70,25 +70,28 @@ export default class ButtonsDisplayer extends React.Component {
         return (
             <View style = {styles.container}>
 
-                <View style={{ flex: 4, flexDirection: 'row' }}>
-                    <View style={{ flex: 1, margin: 10, backgroundColor: 'yellow' }}>
-                        <View style={{ width: 100, height: 50 }}>
+                <View style={{ flexDirection: 'row', paddingTop: '8%' }}>
+
+                    <View style={{paddingTop:'10%',  backgroundColor: 'yellow' }}>
+                        <View style={{ }}>
                             {this.numButtonsGeneration1()}
                         </View>
                     </View>
 
-                    <View style={{ flex: 1, margin: 10, alignItems: 'center', backgroundColor: 'red' }}>
-                        <View style={{ width: 100, height: 50 }}>
+                    <View style={{paddingTop:'10%',  backgroundColor: 'red' }}>
+                        <View style={{  }}>
                             {this.numButtonsGeneration2()}
                         </View>
                     </View>
 
-                    <View style={{ flex: 1, margin: 10, alignItems: 'flex-end', backgroundColor: 'blue' }}>
-                        <View style={{ width: 100, height: 50 }}>
+                    <View style={{paddingTop:'10%',  backgroundColor: 'blue' }}>
+                        <View style={{ }}>
                             {this.numButtonsGeneration3()}
                         </View>
                     </View>
+
                 </View>
+
             </View>
         )
     }
@@ -96,9 +99,12 @@ export default class ButtonsDisplayer extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 3,
+      flex: 5,
       backgroundColor: '#fff',
       flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: '25%'
     }
   
   });
