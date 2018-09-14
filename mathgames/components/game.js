@@ -25,17 +25,10 @@ export default class Game extends React.Component {
 
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         this.equationGenerator();
         this.timerMethod();
 
-        await Font.loadAsync({
-            'GamjaFlower': require('../assets/fonts/GamjaFlower-Regular.ttf')
-        }).then(() => {
-            this.setState({
-                isFontLoaded: true,
-            });
-        })
     }
 
     //create a method that will start the timer
@@ -191,17 +184,15 @@ export default class Game extends React.Component {
         // toISOString() will use ISO standard for the time and substr() method will cut out the unnecary stuff from the format and display the one you want. 
         const timeString = date.toISOString().substr(11, 8);
 
-        const { isFontLoaded } = this.state;
-
         return (
             <View style={styles.container}>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 1, width: '80%', paddingLeft: '35%' }}>
-                    <Text style={{ width: '50%' }}>
+                    <Text style={ { width: '50%' }}>
                         {timeString}
                     </Text>
 
-                    <Text style={{ width: '50%' }}>
+                    <Text style={ { width: '50%' }}>
                         {this.state.question} / 50
                     </Text>
                 </View>
@@ -220,6 +211,5 @@ export default class Game extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-       
     }
 });

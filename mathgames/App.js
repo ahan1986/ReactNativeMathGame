@@ -6,7 +6,7 @@ import Home from './components/home';
 
 export default class App extends React.Component {
   state = {
-    homepage: 'Game'
+    homepage: 'home'
   }
 
   pageChanger = () => {
