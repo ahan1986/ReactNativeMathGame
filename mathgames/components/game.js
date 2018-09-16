@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import ButtonsDisplayer from './NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './PressedButtonDisplayer/PressedButtonDisplay';
 import RandNumDisplayer from './RandomNumberGen/RandNumDisplayer';
-import { Font } from 'expo';
+
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -13,10 +13,12 @@ export default class Game extends React.Component {
             typedNumber: [],
             question: 0,
             timer: 0,
+            min: 0,
+            sec: 0,
             firstNum: "",
             operator: "",
             secondNum: "",
-            isFontLoaded: true,
+            
         }
 
         // if you're using fat arrow syntax, you do not need this bind(this)
@@ -24,25 +26,39 @@ export default class Game extends React.Component {
         this.equationGenerator = this.equationGenerator.bind(this);
 
     }
-
+    
     componentDidMount() {
         this.equationGenerator();
         this.timerMethod();
-
     }
 
     //create a method that will start the timer
     timerMethod = () => {
+
         setInterval(() => {
-            const timerUpdate = this.state.timer + 1;
+
             this.setState({
-                timer: timerUpdate
-            })
+                timer: this.state.timer + 1
+            });
+
         }, 1);
+
+        setInterval(() => {
+            this.setState({
+                sec: this.state.sec + 1
+            });
+        }, 1000);
+
+        setInterval(() => {
+            this.setState({
+                min: this.state.min + 1
+            });
+        }, 60000);
+            
     }
 
     // do all the calculations here and if the user gets the answer correct, reload the equationGenerator()
-    buttonPressedApp(event) {
+    buttonPressedApp = (event) => {
 
         if (event != 'DEL') {
             const numToChange = this.state.typedNumber = [...this.state.typedNumber, event].join('');
@@ -178,18 +194,18 @@ export default class Game extends React.Component {
     render() {
 
         //converting the seconds into a format with minutes and seconds using the date object in the JS library
-        const date = new Date(null);
+        // const date = new Date(null);
 
-        date.setSeconds(this.state.timer);
+        // date.setSeconds(this.state.timer);
         // toISOString() will use ISO standard for the time and substr() method will cut out the unnecary stuff from the format and display the one you want. 
-        const timeString = date.toISOString().substr(11, 8);
+        // const timeString = date.toISOString().substr(11, 8);
 
         return (
             <View style={styles.container}>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 1, width: '80%', paddingLeft: '35%' }}>
-                    <Text style={ { width: '50%' }}>
-                        {timeString}
+                    <Text style={ { width: '100%', fontSize: 50 }}>
+                        {`${this.state.min % 60}:${this.state.sec % 60}:${this.state.timer % 100}`}
                     </Text>
 
                     <Text style={ { width: '50%' }}>
