@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import RandNumDisplayer from './RandNumDisplayer';
 
+// MOVED THIS TO GAME.JS SO THAT I CAN REMOVE THIS AND USE FONT CORRECTLY
+
 export default class RandomNumberGen extends React.Component {
     constructor(props) {
         super(props);

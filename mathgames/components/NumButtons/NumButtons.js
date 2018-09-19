@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, View } from 'react-native';
 
+// a.k.a function NumButtons(props) { };
 
 const NumButtons = props => {
     return (
