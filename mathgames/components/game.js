@@ -6,7 +6,6 @@ import { Font } from 'expo';
 import moment from "moment";
 // import RandNumDisplayer from './RandomNumberGen/RandNumDisplayer';
 
-
 export default class Game extends React.Component {
     constructor(props) {
         super(props);
@@ -16,13 +15,9 @@ export default class Game extends React.Component {
             question: 0,
             timer: 0,
             start: 0,
-            min: 0,
-            sec: 0,
             firstNum: "",
             operator: "",
-            secondNum: "",
-            test: 12345,
-
+            secondNum: "",    
         }
 
         // if you're using fat arrow syntax, you do not need this bind(this)
@@ -35,6 +30,7 @@ export default class Game extends React.Component {
         this.equationGenerator();
         this.timerMethod();
 
+        // loading expo fonts that I downloaded from google font
         Font.loadAsync({
             'GamjaFlower': require('../assets/fonts/GamjaFlower-Regular.ttf')
 
@@ -45,8 +41,13 @@ export default class Game extends React.Component {
         })
     }
 
+    componentWillUnmount() {
+        console.log("unmounting ");
+    }
+
     //create a method that will start the timer
     timerMethod = () => {
+        //grab the time
         const timer = new Date().getTime();
 
         this.setState({
@@ -54,7 +55,8 @@ export default class Game extends React.Component {
             start: timer,
         })
 
-        setInterval(() => {
+        // every interval, grab a new time every interval. with this we will subtract it with the const timer to get the stopwatch going.
+        this.timer = setInterval(() => {
             this.setState({
                 timer: new Date().getTime(),
             });
@@ -86,8 +88,10 @@ export default class Game extends React.Component {
                     console.log(addOneToScore);
                     this.equationGenerator();
                 }, 20);
+            } else if (this.state.question == 51) {
+                const { timer, start } = this.state;
+                
             }
-
 
         } else {
 
@@ -197,7 +201,7 @@ export default class Game extends React.Component {
     }
 
     // this method will show the buttons the user has pressed
-    RandNumDisplayer = () => {
+    randNumDisplayer = () => {
 
         const { isFontLoaded } = this.state;
 
@@ -220,6 +224,8 @@ export default class Game extends React.Component {
         // use moment.js to translate the timer to a modern format
         const duration = moment.duration(measuringTime);
 
+    setTimeout(this.endingOfTheGame, 3000);
+
         return (
 
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 1, width: '80%', paddingLeft: '35%' }}>
@@ -234,6 +240,11 @@ export default class Game extends React.Component {
         )
     }
 
+    endingOfTheGame = () => {
+        clearInterval(this.timer);
+        console.log("hello ");
+    }
+
     render() {
         //converting the seconds into a format with minutes and seconds using the date object in the JS library
         // const date = new Date(null);
@@ -242,14 +253,14 @@ export default class Game extends React.Component {
         // toISOString() will use ISO standard for the time and substr() method will cut out the unnecary stuff from the format and display the one you want. 
         // const timeString = date.toISOString().substr(11, 8);
 
-        //  `${this.state.min % 60}:${this.state.sec % 60}:${this.state.timer % 100}`
-
+        //  ** had all the stuff in the header() here before the return, however; it kept stopping the timer and freezing everything.  I believe it has to do with the unmounting that occurs and the setInterval that keeps moving.  Moving everything to header seems to fix the freezing problem.
 
         return (
             <View style={styles.container}>
+
                 {this.header()}
 
-                {this.RandNumDisplayer()}
+                {this.randNumDisplayer()}
 
                 <PressedButtonDisplay typed={this.state.typedNumber} />
 
