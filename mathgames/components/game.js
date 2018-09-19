@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import ButtonsDisplayer from './NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './PressedButtonDisplayer/PressedButtonDisplay';
 import { Font } from 'expo';
+import moment from "moment";
 // import RandNumDisplayer from './RandomNumberGen/RandNumDisplayer';
 
 
@@ -14,12 +15,14 @@ export default class Game extends React.Component {
             typedNumber: [],
             question: 0,
             timer: 0,
+            start: 0,
             min: 0,
             sec: 0,
             firstNum: "",
             operator: "",
             secondNum: "",
-            
+            test: 12345,
+
         }
 
         // if you're using fat arrow syntax, you do not need this bind(this)
@@ -27,44 +30,36 @@ export default class Game extends React.Component {
         this.equationGenerator = this.equationGenerator.bind(this);
 
     }
-    
+
     componentDidMount() {
         this.equationGenerator();
         this.timerMethod();
 
         Font.loadAsync({
             'GamjaFlower': require('../assets/fonts/GamjaFlower-Regular.ttf')
-            
-          }).then(() => {
+
+        }).then(() => {
             this.setState({
-              isFontLoaded: true,
+                isFontLoaded: true,
             });
-          })
+        })
     }
 
     //create a method that will start the timer
     timerMethod = () => {
+        const timer = new Date().getTime();
+
+        this.setState({
+            timer,
+            start: timer,
+        })
 
         setInterval(() => {
-
             this.setState({
-                timer: this.state.timer + 1
+                timer: new Date().getTime(),
             });
-
         }, 1);
 
-        setInterval(() => {
-            this.setState({
-                sec: this.state.sec + 1
-            });
-        }, 1000);
-
-        setInterval(() => {
-            this.setState({
-                min: this.state.min + 1
-            });
-        }, 60000);
-            
     }
 
     // do all the calculations here and if the user gets the answer correct, reload the equationGenerator()
@@ -201,6 +196,7 @@ export default class Game extends React.Component {
 
     }
 
+    // this method will show the buttons the user has pressed
     RandNumDisplayer = () => {
 
         const { isFontLoaded } = this.state;
@@ -208,16 +204,37 @@ export default class Game extends React.Component {
         return (
             <View style={styles.RandNumDisplayer}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Text style={ isFontLoaded && { fontSize: 50, marginHorizontal: '5%', fontFamily: 'GamjaFlower' }}>{this.state.firstNum}</Text>
-                    <Text style={ isFontLoaded && { fontSize: 50, marginHorizontal: '5%', fontFamily: 'GamjaFlower' }}>{this.state.operator}</Text>
-                    <Text style={ isFontLoaded && { fontSize: 50, marginHorizontal: '5%', fontFamily: 'GamjaFlower' }}>{this.state.secondNum}</Text>
+                    <Text style={isFontLoaded && { fontSize: 50, marginHorizontal: '5%', fontFamily: 'GamjaFlower' }}>{this.state.firstNum}</Text>
+                    <Text style={isFontLoaded && { fontSize: 50, marginHorizontal: '5%', fontFamily: 'GamjaFlower' }}>{this.state.operator}</Text>
+                    <Text style={isFontLoaded && { fontSize: 50, marginHorizontal: '5%', fontFamily: 'GamjaFlower' }}>{this.state.secondNum}</Text>
                 </View>
             </View>
         )
     }
 
-    render() {
+    header = () => {
+        // subtracting the current time with the time the setInterval activiates
+        let measuringTime = this.state.timer - this.state.start;
+        // this will add a '0' so that it will look like a normal stopwatch
+        const pad = (n) => n < 10 ? '0' + n : n;
+        // use moment.js to translate the timer to a modern format
+        const duration = moment.duration(measuringTime);
 
+        return (
+
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 1, width: '80%', paddingLeft: '35%' }}>
+                <Text style={{ width: '100%' }}>
+                    {pad(duration.minutes() % 60)}:{pad(duration.seconds())}:{pad(duration.milliseconds() % 100)}
+                </Text>
+
+                <Text style={{ width: '50%' }}>
+                    {this.state.question} / 50
+                </Text>
+            </View>
+        )
+    }
+
+    render() {
         //converting the seconds into a format with minutes and seconds using the date object in the JS library
         // const date = new Date(null);
 
@@ -225,20 +242,12 @@ export default class Game extends React.Component {
         // toISOString() will use ISO standard for the time and substr() method will cut out the unnecary stuff from the format and display the one you want. 
         // const timeString = date.toISOString().substr(11, 8);
 
-        
+        //  `${this.state.min % 60}:${this.state.sec % 60}:${this.state.timer % 100}`
+
 
         return (
             <View style={styles.container}>
-
-                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 1, width: '80%', paddingLeft: '35%' }}>
-                    <Text style={ { width: '100%', fontSize: 50 }}>
-                        {`${this.state.min % 60}:${this.state.sec % 60}:${this.state.timer % 100}`}
-                    </Text>
-
-                    <Text style={ { width: '50%' }}>
-                        {this.state.question} / 50
-                    </Text>
-                </View>
+                {this.header()}
 
                 {this.RandNumDisplayer()}
 
@@ -249,22 +258,7 @@ export default class Game extends React.Component {
             </View>
         );
     }
-}
-
-// ================================================ RandNumDisplayer FUNCTION  ================================================
-
-// const RandNumDisplayer = props => {
-
-//     return (
-//         <View style={styles.RandNumDisplayer}>
-//             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-//                 <Text style={{ fontSize: 50, marginHorizontal: '5%', fontFamily: 'GamjaFlower' }}>{props.numOne}</Text>
-//                 <Text style={{ fontSize: 50, marginHorizontal: '5%', fontFamily: 'GamjaFlower' }}>{props.randOp}</Text>
-//                 <Text style={{ fontSize: 50, marginHorizontal: '5%', fontFamily: 'GamjaFlower' }}>{props.numTwo}</Text>
-//             </View>
-//         </View>
-//     )
-// };
+};
 
 // ================================================ STYLES  ================================================================
 const styles = StyleSheet.create({
