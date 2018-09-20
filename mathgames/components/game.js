@@ -83,7 +83,7 @@ export default class Game extends React.Component {
                     })
                     
                     //this if/else statement will stop the game and transfer to the ending.js page if the user finishes all the questions given
-                    if (this.state.question == 1) {
+                    if (this.state.question == 11) {
                         this.endingOfTheGame()
                     } else {
                         this.equationGenerator();

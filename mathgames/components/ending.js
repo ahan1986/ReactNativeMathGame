@@ -13,7 +13,14 @@ export default class Ending extends React.Component {
 
         return (
             <View style={styles.container}>
-                <Text>Ending of the Game Page!!! {duration.seconds()} </Text>
+                <Text style={{  }} >Your time is {duration.minutes()}:{duration.seconds()}:{Math.floor(duration.milliseconds() / 10)} </Text>
+                <TouchableOpacity
+                    onPress={this.props.playAgain}
+                    style={styles.button}
+                    activeOpacity={0.7}
+                >
+                    <Text style={styles.textFont}>Play Again?</Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -22,7 +29,18 @@ export default class Ending extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+    },
+    button: {
         justifyContent: 'center',
         alignItems: 'center',
+        height: 100,
+        width: 100,
+        borderRadius: 50,
+        backgroundColor:'red',
+    },
+    textFont: {
+        fontSize: 15,
     }
 });

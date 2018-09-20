@@ -13,14 +13,17 @@ export default class Home extends React.Component {
 
     render() {
         return (
-            <TouchableOpacity
-                style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-                activeOpacity={0.7}
-            >
-                <View style={[styles.container]} >
-                    <Button title='Start' onPress={this.startTheGame} />
-                </View>
-            </TouchableOpacity>
+
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
+                <TouchableOpacity
+                    style={[styles.container]}
+                    activeOpacity={0.7}
+                    onPress={this.startTheGame} 
+                >
+                    <Text>Start</Text>
+                </TouchableOpacity>
+            </View>
+
         )
     }
 }

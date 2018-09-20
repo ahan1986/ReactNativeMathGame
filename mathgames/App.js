@@ -24,7 +24,7 @@ export default class App extends React.Component {
     } else if(this.state.homepage == 'Game') {
       return <Game finished50Questions={this.endingPage} />
     } else {
-      return <Ending endingTime={this.state.endingTimer} />
+      return <Ending playAgain={this.pageChanger} endingTime={this.state.endingTimer} />
     }
   }
 
