@@ -3,12 +3,13 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import Game from './components/game';
 import Home from './components/home';
 import Ending from './components/ending';
+import CountDown from './components/countDown';
 
 
 export default class App extends React.Component {
   state = {
     endingTimer: 0,
-    homepage: 'home'
+    homepage: ''
   }
 
   pageChanger = () => {
@@ -23,8 +24,10 @@ export default class App extends React.Component {
       return <Home pageChanger={this.pageChanger} />
     } else if(this.state.homepage == 'Game') {
       return <Game finished50Questions={this.endingPage} />
-    } else {
+    } else if(this.state.homepage == 'Ending') {
       return <Ending playAgain={this.pageChanger} endingTime={this.state.endingTimer} />
+    } else {
+      return <CountDown />
     }
   }
 

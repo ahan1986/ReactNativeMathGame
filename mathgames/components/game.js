@@ -219,7 +219,7 @@ export default class Game extends React.Component {
         // subtracting the current time with the time the setInterval activiates
         let measuringTime = this.state.timer - this.state.start;
         // this will add a '0' so that it will look like a normal stopwatch
-        const pad = (n) => n < 10 ? '0' + n : n;
+        const pad = (num) => num < 10 ? '0' + num : num;
         // use moment.js to translate the timer to a modern format
         const duration = moment.duration(measuringTime);
 
