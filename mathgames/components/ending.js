@@ -5,7 +5,7 @@ import moment from 'moment';
 export default class Ending extends React.Component {
     constructor(props) {
         super(props);
-        console.log("endingpage props "+this.props.endingTime);
+        
     }
     render() {
         // using moment.js to convert to modern time-formats

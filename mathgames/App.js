@@ -8,7 +8,7 @@ import Ending from './components/ending';
 export default class App extends React.Component {
   state = {
     endingTimer: 0,
-    homepage: 'Game'
+    homepage: 'home'
   }
 
   pageChanger = () => {

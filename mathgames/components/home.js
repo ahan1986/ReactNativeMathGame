@@ -11,19 +11,28 @@ export default class Home extends React.Component {
         this.props.pageChanger()
     }
 
-    render () {
+    render() {
         return (
-            <View style={styles.container} >
-                <Button title='Start' onPress={this.startTheGame} />
-            </View>
+            <TouchableOpacity
+                style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                activeOpacity={0.7}
+            >
+                <View style={[styles.container]} >
+                    <Button title='Start' onPress={this.startTheGame} />
+                </View>
+            </TouchableOpacity>
         )
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 50,
+        flexDirection: 'column',
+        height: 100,
+        width: 100,
+        backgroundColor: '#4BC05F',
     }
 })
