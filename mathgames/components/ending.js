@@ -1,0 +1,25 @@
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+
+export default class Ending extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log("endingpage props "+this.props.endingTime);
+    }
+    render() {
+
+        return (
+            <View style={styles.container}>
+                <Text>Ending of the Game Page!!! </Text>
+            </View>
+        )
+    }
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+});

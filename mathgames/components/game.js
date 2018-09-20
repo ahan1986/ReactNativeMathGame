@@ -17,7 +17,7 @@ export default class Game extends React.Component {
             start: 0,
             firstNum: "",
             operator: "",
-            secondNum: "",    
+            secondNum: "",
         }
 
         // if you're using fat arrow syntax, you do not need this bind(this)
@@ -41,10 +41,6 @@ export default class Game extends React.Component {
         })
     }
 
-    componentWillUnmount() {
-        console.log("unmounting ");
-    }
-
     //create a method that will start the timer
     timerMethod = () => {
         //grab the time
@@ -55,8 +51,8 @@ export default class Game extends React.Component {
             start: timer,
         })
 
-        // every interval, grab a new time every interval. with this we will subtract it with the const timer to get the stopwatch going.
-        this.timer = setInterval(() => {
+        // every interval, grab a new time every interval. with this we will subtract it with the const timer to get the stopwatch going. Calling this setInterval 'this.intervalId' so that I can clearInterval later on
+        this.intervalId = setInterval(() => {
             this.setState({
                 timer: new Date().getTime(),
             });
@@ -85,12 +81,15 @@ export default class Game extends React.Component {
                         typedNumber: [],
                         question: addOneToScore
                     })
-                    console.log(addOneToScore);
-                    this.equationGenerator();
+                    
+                    //this if/else statement will stop the game and transfer to the ending.js page if the user finishes all the questions given
+                    if (this.state.question == 1) {
+                        this.endingOfTheGame()
+                    } else {
+                        this.equationGenerator();
+                    }
+
                 }, 20);
-            } else if (this.state.question == 51) {
-                const { timer, start } = this.state;
-                
             }
 
         } else {
@@ -224,8 +223,6 @@ export default class Game extends React.Component {
         // use moment.js to translate the timer to a modern format
         const duration = moment.duration(measuringTime);
 
-    setTimeout(this.endingOfTheGame, 3000);
-
         return (
 
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 1, width: '80%', paddingLeft: '35%' }}>
@@ -241,8 +238,16 @@ export default class Game extends React.Component {
     }
 
     endingOfTheGame = () => {
-        clearInterval(this.timer);
-        console.log("hello ");
+
+        // setting setInterval to this.intervalId so that I can clearInterval this.timer here
+        clearInterval(this.intervalId);
+
+        const { timer, start } = this.state;
+        const endingTime = timer - start;
+
+        this.props.finished50Questions(endingTime);
+
+
     }
 
     render() {
