@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import moment from 'moment';
 
 export default class Ending extends React.Component {
     constructor(props) {
@@ -7,10 +8,12 @@ export default class Ending extends React.Component {
         console.log("endingpage props "+this.props.endingTime);
     }
     render() {
+        // using moment.js to convert to modern time-formats
+        const duration = moment.duration(this.props.endingTime);
 
         return (
             <View style={styles.container}>
-                <Text>Ending of the Game Page!!! </Text>
+                <Text>Ending of the Game Page!!! {duration.seconds()} </Text>
             </View>
         )
     }
