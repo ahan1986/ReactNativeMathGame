@@ -10,10 +10,11 @@ export default class Ending extends React.Component {
     render() {
         // using moment.js to convert to modern time-formats
         const duration = moment.duration(this.props.endingTime);
+        const pad = (num) => num < 10 ? "0" + num : num;
 
         return (
             <View style={styles.container}>
-                <Text style={{  }} >Your time is {duration.minutes()}:{duration.seconds()}:{Math.floor(duration.milliseconds() / 10)} </Text>
+                <Text style={{  }} >Your time is {pad(duration.minutes())}:{pad(duration.seconds())}:{pad(Math.floor(duration.milliseconds() / 10))} </Text>
                 <TouchableOpacity
                     onPress={this.props.playAgain}
                     style={styles.button}

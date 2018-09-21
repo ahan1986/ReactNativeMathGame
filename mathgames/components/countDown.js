@@ -17,7 +17,6 @@ export default class CountDown extends React.Component {
     };
 
     animatedBadge = (cad) => {
-        console.log(this.props);
 
         this.state.countDownBadge.setValue(1);
 

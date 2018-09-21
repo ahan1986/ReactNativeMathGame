@@ -83,7 +83,7 @@ export default class Game extends React.Component {
                     })
                     
                     //this if/else statement will stop the game and transfer to the ending.js page if the user finishes all the questions given
-                    if (this.state.question == 11) {
+                    if (this.state.question == 21) {
                         this.endingOfTheGame()
                     } else {
                         this.equationGenerator();
@@ -231,7 +231,7 @@ export default class Game extends React.Component {
                 </Text>
 
                 <Text style={{ width: '50%' }}>
-                    {this.state.question} / 50
+                    {this.state.question} / 20
                 </Text>
             </View>
         )
