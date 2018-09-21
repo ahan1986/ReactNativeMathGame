@@ -4,36 +4,34 @@ import { StyleSheet, Text, View, TouchableOpacity, Button, Animated } from 'reac
 export default class CountDown extends React.Component {
     state = {
         countDownBadge: new Animated.Value(1),
-        countDownCadence: ['Ready', 'Set', 'GO!'],
         countDown: '',
     };
 
     componentDidMount() {
-        // this.animatedBadge();
         this.countDownMethod();
     };
 
-    animatedBadge = () => {
-        
+    animatedBadge = (cad) => {
+
+        this.state.countDownBadge.setValue(1);
+
+        this.setState({
+            countDown: cad
+        });
+
         Animated.timing(this.state.countDownBadge, {
             toValue: 0,
             duration: 2000
         }).start();
+
     };
 
     countDownMethod = () => {
-        
-        for (let i = 0; i < this.state.countDownCadence.length; i++) {
+        const count = ['Ready', 'Set', 'GO!'];
 
-            this.state.countDownBadge.setValue(1);
-
-            this.setState({
-                countDown: this.state.countDownCadence[i]
-            })
-
-            this.animatedBadge();
-            console.log(this.state.countDownCadence[i])
-        }
+        this.animatedBadge(count[0]);
+        setTimeout(() => this.animatedBadge(count[1]), 2000);
+        setTimeout(() => this.animatedBadge(count[2]), 4000);
 
     };
 
@@ -51,7 +49,7 @@ export default class CountDown extends React.Component {
                     ]}
                 >
                     <Text style={styles.countDownButton}>
-                        hello {this.state.countDown} hello
+                        {this.state.countDown}
                     </Text>
                 </Animated.View>
             </View>
@@ -67,7 +65,7 @@ const styles = StyleSheet.create({
 
     },
     countDownButton: {
-        fontSize: 15,
+        fontSize: 45,
     },
     animatedCountDown: {
         justifyContent: 'center',
@@ -75,6 +73,6 @@ const styles = StyleSheet.create({
         height: '30%',
         width: '50%',
         borderRadius: 50,
-        backgroundColor:'red',
+        backgroundColor: 'red',
     }
 })
