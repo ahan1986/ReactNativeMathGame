@@ -26,7 +26,7 @@ export default class CountDown extends React.Component {
 
         Animated.timing(this.state.countDownBadge, {
             toValue: 0,
-            duration: 2000
+            duration: 1500
         }).start();
 
     };
@@ -37,10 +37,10 @@ export default class CountDown extends React.Component {
         // starting of the countdown.
         this.animatedBadge(count[0]);
         // for the setTimeout, I had it without () => and it gave me a warning that 'undefined is not an object (evaluating func.apply).
-        setTimeout(() => this.animatedBadge(count[1]), 2000);
-        setTimeout(() => this.animatedBadge(count[2]), 4000);
+        setTimeout(() => this.animatedBadge(count[1]), 1500);
+        setTimeout(() => this.animatedBadge(count[2]), 3000);
         // using method in app.js to be called after 6 seconds so that it will go from the countdown page to the game page.
-        setTimeout(() => this.props.countDownPage(), 6000);
+        setTimeout(() => this.props.countDownPage(), 4500);
     
     };
 
