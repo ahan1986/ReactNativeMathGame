@@ -2,16 +2,22 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, Animated } from 'react-native';
 
 export default class CountDown extends React.Component {
-    state = {
-        countDownBadge: new Animated.Value(1),
-        countDown: '',
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            countDownBadge: new Animated.Value(1),
+            countDown: '',
+        };
     };
+    
 
     componentDidMount() {
         this.countDownMethod();
     };
 
     animatedBadge = (cad) => {
+        console.log(this.props);
 
         this.state.countDownBadge.setValue(1);
 
@@ -29,11 +35,14 @@ export default class CountDown extends React.Component {
     countDownMethod = () => {
         const count = ['Ready', 'Set', 'GO!'];
 
+        // starting of the countdown.
         this.animatedBadge(count[0]);
         // for the setTimeout, I had it without () => and it gave me a warning that 'undefined is not an object (evaluating func.apply).
         setTimeout(() => this.animatedBadge(count[1]), 2000);
         setTimeout(() => this.animatedBadge(count[2]), 4000);
-
+        // using method in app.js to be called after 6 seconds so that it will go from the countdown page to the game page.
+        setTimeout(() => this.props.countDownPage(), 6000);
+    
     };
 
     render() {

@@ -9,25 +9,24 @@ import CountDown from './components/countDown';
 export default class App extends React.Component {
   state = {
     endingTimer: 0,
-    homepage: ''
+    homepage: 'Home'
   }
 
   gamePage = () => {
-    this.state.homepage = 'game';
     this.setState({
-      homepage: this.state.homepage
+      homepage: 'Game'
     });
   }
 
   countDownPage = (RSG) => {
-    this.state.homepage = 'countDown';
+
     this.setState({
-      homepage: this.state.homepage
+      homepage: 'countDown'
     })
   }
 
   currentPage = (event) => {
-    if(this.state.homepage == 'home') {
+    if(this.state.homepage == 'Home') {
       return <Home pageChanger={this.countDownPage} />
     } else if(this.state.homepage == 'Game') {
       return <Game finished50Questions={this.endingPage} />
