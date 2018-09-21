@@ -30,6 +30,7 @@ export default class CountDown extends React.Component {
         const count = ['Ready', 'Set', 'GO!'];
 
         this.animatedBadge(count[0]);
+        // for the setTimeout, I had it without () => and it gave me a warning that 'undefined is not an object (evaluating func.apply).
         setTimeout(() => this.animatedBadge(count[1]), 2000);
         setTimeout(() => this.animatedBadge(count[2]), 4000);
 

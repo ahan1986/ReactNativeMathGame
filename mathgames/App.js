@@ -12,22 +12,29 @@ export default class App extends React.Component {
     homepage: ''
   }
 
-  pageChanger = () => {
-    this.state.homepage = 'Game';
+  gamePage = () => {
+    this.state.homepage = 'game';
     this.setState({
       homepage: this.state.homepage
     });
   }
 
+  countDownPage = (RSG) => {
+    this.state.homepage = 'countDown';
+    this.setState({
+      homepage: this.state.homepage
+    })
+  }
+
   currentPage = (event) => {
     if(this.state.homepage == 'home') {
-      return <Home pageChanger={this.pageChanger} />
+      return <Home pageChanger={this.countDownPage} />
     } else if(this.state.homepage == 'Game') {
       return <Game finished50Questions={this.endingPage} />
     } else if(this.state.homepage == 'Ending') {
-      return <Ending playAgain={this.pageChanger} endingTime={this.state.endingTimer} />
+      return <Ending playAgain={this.countDownPage} endingTime={this.state.endingTimer} />
     } else {
-      return <CountDown />
+      return <CountDown countDownPage = {this.gamePage} />
     }
   }
 
