@@ -9,7 +9,7 @@ import CountDown from './components/countDown';
 export default class App extends React.Component {
   state = {
     endingTimer: 0,
-    homepage: 'Home'
+    homepage: 'Game'
   }
 
   gamePage = () => {

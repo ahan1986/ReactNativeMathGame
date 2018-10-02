@@ -4,6 +4,7 @@ import ButtonsDisplayer from './NumButtons/ButtonsDisplayer';
 import PressedButtonDisplay from './PressedButtonDisplayer/PressedButtonDisplay';
 import { Font } from 'expo';
 import moment from "moment";
+import Header from './Header/Header';
 // import RandNumDisplayer from './RandomNumberGen/RandNumDisplayer';
 
 export default class Game extends React.Component {
@@ -56,7 +57,7 @@ export default class Game extends React.Component {
             this.setState({
                 timer: new Date().getTime(),
             });
-        }, 1);
+        }, 50);
 
     }
 
@@ -224,7 +225,6 @@ export default class Game extends React.Component {
         const duration = moment.duration(measuringTime);
 
         return (
-
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flex: 1, width: '80%', paddingLeft: '35%' }}>
                 <Text style={{ width: '100%' }}>
                     {pad(duration.minutes() % 60)}:{pad(duration.seconds())}:{pad(duration.milliseconds() % 100)}
@@ -246,8 +246,6 @@ export default class Game extends React.Component {
         const endingTime = timer - start;
 
         this.props.finished50Questions(endingTime);
-
-
     }
 
     render() {
@@ -259,11 +257,12 @@ export default class Game extends React.Component {
         // const timeString = date.toISOString().substr(11, 8);
 
         //  ** had all the stuff in the header() here before the return, however; it kept stopping the timer and freezing everything.  I believe it has to do with the unmounting that occurs and the setInterval that keeps moving.  Moving everything to header seems to fix the freezing problem.
-
+console.log('rendering');
         return (
             <View style={styles.container}>
 
-                {this.header()}
+                {/* {this.header()} */}
+                <Header timer={this.state.timer} start={this.state.start} question={this.state.question} />
 
                 {this.randNumDisplayer()}
 

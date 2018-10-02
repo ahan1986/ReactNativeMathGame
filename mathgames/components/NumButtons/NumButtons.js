@@ -1,13 +1,14 @@
 import React from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, TouchableHighlight } from 'react-native';
 
 // a.k.a function NumButtons(props) { };
 
 const NumButtons = props => {
     return (
-        <View style={{height: 100, width: 100}}>
-            <Button onPress={() => props.buttonPressed(props.num)} title={props.num}/>
-        </View>
+        <TouchableHighlight style={{height: 100, width: 100}} onPress={() => props.buttonPressed(props.num)} >
+            {/* <Button onPress={() => props.buttonPressed(props.num)} title={props.num}/> */}
+                <View>{props.num}</View>
+        </TouchableHighlight>
     )
 }
 
