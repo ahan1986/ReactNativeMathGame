@@ -257,7 +257,6 @@ export default class Game extends React.Component {
         // const timeString = date.toISOString().substr(11, 8);
 
         //  ** had all the stuff in the header() here before the return, however; it kept stopping the timer and freezing everything.  I believe it has to do with the unmounting that occurs and the setInterval that keeps moving.  Moving everything to header seems to fix the freezing problem.
-console.log('rendering');
         return (
             <View style={styles.container}>
 
